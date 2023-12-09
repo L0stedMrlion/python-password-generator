@@ -1,3 +1,6 @@
+import random
+import string
+
 def generate_password(length, include_numbers=True, include_special_characters=True):
     characters = string.ascii_letters
     if include_numbers:
