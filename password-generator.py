@@ -15,13 +15,10 @@ try:
     if length <= 0:
         print("❌ Please enter a positive integer for the password length.")
     else:
-        # Ask the user if they want to include numbers
         include_numbers = input("🔢 Include numbers in the password? (y/n): ").lower().startswith('y')
 
-        # Ask the user if they want to include special characters
         include_special = input("🎨 Include special characters like {}[]()? (y/n): ").lower().startswith('y')
 
-        # Generate and print the password
         password = generate_password(length, include_numbers=include_numbers, include_special_characters=include_special)
         print("🔑 Generated Password:", password)
 except ValueError:
