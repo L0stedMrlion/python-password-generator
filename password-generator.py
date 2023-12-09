@@ -1,10 +1,28 @@
 import random
 import string
 
-def generate_password(length=12):
-    characters = string.ascii_letters + string.digits + string.punctuation
+def generate_password(length, include_numbers=True, include_special_characters=True):
+    characters = string.ascii_letters
+    if include_numbers:
+        characters += string.digits
+    if include_special_characters:
+        characters += string.punctuation
     password = ''.join(random.choice(characters) for i in range(length))
     return password
 
-password = generate_password(16)
-print(password)
+try:
+    length = int(input("🔐 How many characters do you want your password to be? "))
+    if length <= 0:
+        print("❌ Please enter a positive integer for the password length.")
+    else:
+        # Ask the user if they want to include numbers
+        include_numbers = input("🔢 Include numbers in the password? (y/n): ").lower().startswith('y')
+
+        # Ask the user if they want to include special characters
+        include_special = input("🎨 Include special characters like {}[]()? (y/n): ").lower().startswith('y')
+
+        # Generate and print the password
+        password = generate_password(length, include_numbers=include_numbers, include_special_characters=include_special)
+        print("🔑 Generated Password:", password)
+except ValueError:
+    print("❌ Please enter a valid integer for the password length.")
