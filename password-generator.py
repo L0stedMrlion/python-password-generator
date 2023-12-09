@@ -1,6 +1,3 @@
-import random
-import string
-
 def generate_password(length, include_numbers=True, include_special_characters=True):
     characters = string.ascii_letters
     if include_numbers:
@@ -10,7 +7,7 @@ def generate_password(length, include_numbers=True, include_special_characters=T
     password = ''.join(random.choice(characters) for i in range(length))
     return password
 
-language = input("🌐 Choose a language (en/cz): ").lower()
+language = input("🌐 Choose a language (en/cz/ru): ").lower()
 
 if language in ['en', 'english']:
     prompt_length = "🔐 How many characters do you want your password to be? "
@@ -26,8 +23,15 @@ elif language in ['cz', 'czech']:
     generated_message = "🔑 Vygenerované heslo:"
     error_message = "❌ Zadejte prosím kladné celé číslo pro délku hesla."
 
+elif language in ['ru', 'russian']:
+    prompt_length = "🔐 Сколько символов должен содержать ваш пароль? "
+    prompt_numbers = "🔢 Включить цифры в пароль? (да/нет): "
+    prompt_special = "🎨 Включить специальные символы типа {}[]()? (да/нет): "
+    generated_message = "🔑 Сгенерированный пароль:"
+    error_message = "❌ Пожалуйста, введите положительное целое число для длины пароля."
+
 else:
-    print("❌ Unsupported language. Please choose 'en' or 'english' for English or 'cz' or 'czech' for Czech.")
+    print("❌ Unsupported language. Please choose 'en' or 'english' for English, 'cz' or 'czech' for Czech, or 'ru' or 'russian' for Russian.")
     exit()
 
 try:
@@ -35,9 +39,9 @@ try:
     if length <= 0:
         print(error_message)
     else:
-        include_numbers = input(prompt_numbers).lower() in ['yes', 'y', 'a', 'ano']
+        include_numbers = input(prompt_numbers).lower() in ['yes', 'y', 'ano', 'a', 'да', 'д']
 
-        include_special = input(prompt_special).lower() in ['yes', 'y', 'a', 'ano']
+        include_special = input(prompt_special).lower() in ['yes', 'y', 'ano', 'a', 'да', 'д']
 
         password = generate_password(length, include_numbers=include_numbers, include_special_characters=include_special)
         print(generated_message, password)
