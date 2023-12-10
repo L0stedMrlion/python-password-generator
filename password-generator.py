@@ -10,10 +10,21 @@ def generate_password(length, include_numbers=True, include_special_characters=T
     password = ''.join(random.choice(characters) for i in range(length))
     return password
 
-language = input("🌐 Choose a language (en/cz/ru): ").lower()
+with open("langs/lang.json", "r", encoding="utf-8") as lang_file:
+    lang_data = json.load(lang_file)
 
-with open(f"langs/{language}.json", "r", encoding="utf-8") as file:
-    prompts = json.load(file)
+print("🌐 Available Languages:")
+for code, name in lang_data.items():
+    print(f"{code}: {name}")
+
+selected_lang_code = input("🌐 Choose a language code (e.g., en/cz/ru): ").lower()
+
+if selected_lang_code not in lang_data:
+    print("❌ Invalid language code.")
+    exit()
+
+with open(f"langs/{selected_lang_code}.json", "r", encoding="utf-8") as prompts_file:
+    prompts = json.load(prompts_file)
 
 try:
     length = int(input(prompts["length_prompt"]))
