@@ -1,0 +1,7 @@
+{
+    "length_prompt": "🔐 Kolik znaků má mít vaše heslo? ",
+    "numbers_prompt": "🔢 Má obsahovat čísla? (ano/ne): ",
+    "special_prompt": "🎨 Má obsahovat speciální znaky {}[]()? (ano/ne): ",
+    "generated_message": "🔑 Vygenerované heslo:",
+    "error_message": "❌ Zadejte prosím kladné celé číslo pro délku hesla."
+}

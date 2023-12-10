@@ -1,0 +1,7 @@
+{
+    "length_prompt": "🔐 How many characters do you want your password to be? ",
+    "numbers_prompt": "🔢 Include numbers in the password? (yes/no): ",
+    "special_prompt": "🎨 Include special characters like {}[]()? (yes/no): ",
+    "generated_message": "🔑 Generated Password:",
+    "error_message": "❌ Please enter a positive integer for the password length."
+}
